@@ -1,6 +1,9 @@
 @model BooksEntity
 @{
     ViewData["Title"] = "Create New Record";
+    var buttonText = Model.Id == 0 ? "Create" : "Update";
+    var method = Model.Id == 0 ? "post" :"put";
+    var action = Model.Id == 0 ? "CreateBook" : "UpdateBook";
 }
 
 <h2>Create a new Record</h2>
@@ -8,7 +11,10 @@
 <br>
 
 
-<form asp-action="CreateBook" asp-controller="Book" method="post">
+<form asp-action="@action" asp-controller="Book" method="@method">
+    @if (Model.Id != 0){
+        <input type="hidden" asp-for="Id" />
+    }
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Title</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Title">
@@ -24,6 +30,6 @@
     <input type="number" class="form-control" id="ISBN" asp-for="ISBN">
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">@buttonText</button>
   <a asp-action="Index" asp-controller="Book" class="btn btn-secondary">View Table</a>
 </form>

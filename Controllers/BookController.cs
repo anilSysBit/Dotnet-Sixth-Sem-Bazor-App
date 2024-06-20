@@ -43,4 +43,21 @@ public class BookController : Controller{
         return RedirectToAction("Index");
     }
 
+    public ActionResult Update(int id){
+        var book = _db.Books.Find(id);
+        if(book == null){
+            return NotFound();
+        }
+        return View("Create",book);
+    }
+
+    public ActionResult UpdateBook(BooksEntity book){
+        if(ModelState.IsValid){
+            _db.Books.Update(book);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        return View("Create",book);
+    }
+
 }

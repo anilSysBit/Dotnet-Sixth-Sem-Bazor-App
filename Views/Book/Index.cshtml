@@ -30,6 +30,7 @@
                         <td>@item.Author</td>
                         <td>@item.ISBN</td>
                         <td><a href="@Url.Action("Delete", "Book",new {id= @item.Id})" class="btn btn-danger">Delete</a></td>
+                        <td><a  href="@Url.Action("Update", "Book",new {id= @item.Id})" class="btn btn-secondary">Edit</a></td>
                     </tr>
                 }
             </tbody>
