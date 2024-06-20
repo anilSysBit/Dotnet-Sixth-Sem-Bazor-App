@@ -32,4 +32,15 @@ public class BookController : Controller{
         return RedirectToAction("Index");
     }
 
+    public ActionResult Delete(int id){
+        var book = _db.Books.Find(id);
+        if(book == null){
+            return NotFound();
+        }
+        _db.Books.Remove(book);
+        _db.SaveChanges();
+
+        return RedirectToAction("Index");
+    }
+
 }
