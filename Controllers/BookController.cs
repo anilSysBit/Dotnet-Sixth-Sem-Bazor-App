@@ -21,8 +21,8 @@ public class BookController : Controller{
     }
 
     public IActionResult Create(){
-        
-        return View();
+        BooksEntity newBook = new BooksEntity{Id = 0};
+        return View("Create",newBook);
     }
 
     [HttpPost]
