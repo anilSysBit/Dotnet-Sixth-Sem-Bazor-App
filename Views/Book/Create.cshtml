@@ -1,0 +1,29 @@
+@model BooksEntity
+@{
+    ViewData["Title"] = "Create New Record";
+}
+
+<h2>Create a new Record</h2>
+
+<br>
+
+
+<form asp-action="CreateBook" asp-controller="Book" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Title</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Title">
+    @* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> *@
+  </div>
+  <div class="mb-3">
+    <label for="AUTHOR" class="form-label">AUTHOR</label>
+    <input type="text" class="form-control" id="AUTHOR" asp-for="Author">
+  </div>
+
+    <div class="mb-3">
+    <label for="ISBN" class="form-label">ISBN</label>
+    <input type="number" class="form-control" id="ISBN" asp-for="ISBN">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a asp-action="Index" asp-controller="Book" class="btn btn-secondary">View Table</a>
+</form>
